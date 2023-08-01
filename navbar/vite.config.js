@@ -1,31 +1,31 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import federation from '@originjs/vite-plugin-federation'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import federation from "@originjs/vite-plugin-federation";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     federation({
-      name: 'home',
-      filename: 'remoteEntry.js',
+      name: "home",
+      filename: "remoteEntry.js",
       exposes: {
-        './navbar': './src/components/Navbar.vue',
+        "./navbar": "./src/components/Navbar.vue",
       },
-      shared: ['vue']
-    })
+      shared: ["vue"],
+    }),
   ],
   build: {
     assetsInlineLimit: 40960,
-    target: 'esnext',
+    target: "esnext",
     minify: true,
     cssCodeSplit: false,
     sourcemap: true,
     rollupOptions: {
       output: {
-        format: 'esm',
-        minifyInternalExports: false
-      }
-    }
-  }
-})
+        format: "esm",
+        minifyInternalExports: false,
+      },
+    },
+  },
+});
